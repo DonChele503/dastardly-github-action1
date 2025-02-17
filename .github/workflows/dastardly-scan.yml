@@ -1,0 +1,16 @@
+name: Dastardly Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  dastardly-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Dastardly GitHub Action
+        uses: PortSwigger/dastardly-github-action@main
+        with:
+          burp_report: ${{ secrets.BURP_REPORT }}
